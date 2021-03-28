@@ -12,3 +12,12 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+.card {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.title {
+  margin-top: 10vh;
+}
