@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Coffee
 
 
 
@@ -24,5 +25,7 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def coffee(request):
-    return render(request, 'coffee/index.html', {'coffees': coffees})
+
+def coffee_index(request):
+    coffees = Coffee.object.all()
+    return render(request,'coffees/index.html', {'coffees':coffees})
