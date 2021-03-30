@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirct
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Coffee
@@ -35,8 +35,8 @@ def about(request):
 
 def coffee_index(request):
     coffees = Coffee.objects.all()
-    return render(request,'coffees/index.html', {'coffees':coffees})
+    return render(request,'coffee/index.html', {'coffees':coffees})
 
-def coffees_detail(request, cat_id):
-  coffee = Coffee.objects.get(id=cat_id)
+def coffees_detail(request, coffee_id):
+  coffee = Coffee.objects.get(id=coffee_id)
   return render(request, 'coffee/detail.html', { 'coffee': coffee })
