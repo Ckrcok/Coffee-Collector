@@ -1,15 +1,17 @@
 {% extends 'base.html' %} {% block content %} {% if object %}
 <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
-<h1>Add Coffee</h1>
+<h1 class="subtitle is-2">Add Coffee</h1>
 {% endif %}
 <!-- Leaving the action empty makes the form post to the same url used to display it -->
-<form class="label" action="" method="post">
+<form class="form" action="" method="post">
   <!-- Django requires the following for security purposes -->
   {% csrf_token %}
-  <table class="label">
+  <table class="table is-hoverable">
     <!-- Render the inputs inside of <tr>s & <td>s -->
-    {{ form.as_table }}
+    <div class="label">
+      {{ form.as_table }}
+    </div>
   </table>
   <input class="button is-primary" type="submit" value="Submit!" class="btn" />
 </form>
