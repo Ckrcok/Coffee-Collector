@@ -14,10 +14,16 @@ footer.page-footer {
 }
 
 .card {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-top: 1vh; */
+ margin-bottom: 5vh;
 }
 
-.title {
-  margin-top: 10vh;
+.card-title {
+  margin-top: 1px;
+  padding: 0;
+}
+
+.card-content{
+  padding-top: 1vh;
+  padding: 1vw;
 }
