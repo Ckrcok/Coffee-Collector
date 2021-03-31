@@ -14,8 +14,9 @@ footer.page-footer {
 }
 
 .card {
-  margin-top: 1vh; */
+  margin-top: 1vh;
  margin-bottom: 5vh;
+ text-align: center;
 }
 
 .card-title {

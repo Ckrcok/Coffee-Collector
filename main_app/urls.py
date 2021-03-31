@@ -10,5 +10,6 @@ urlpatterns = [
     path('coffee/create/', views.CoffeeCreate.as_view(), name='coffee_create'),
     path('coffee/<int:pk>/update/', views.CoffeeUpdate.as_view(), name='coffee_update'),
     path('coffee/<int:pk>/delete/', views.CoffeeDelete.as_view(), name='coffee_delete'),
+    path('cats/<int:coffee_id>/add_sugar/', views.add_sugar, name='add_sugar'),
 
 ]

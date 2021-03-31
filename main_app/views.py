@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Coffee
+from .forms import SugarForm
 
 
 
@@ -39,4 +40,16 @@ def coffee_index(request):
 
 def coffees_detail(request, coffee_id):
   coffee = Coffee.objects.get(id=coffee_id)
-  return render(request, 'coffee/detail.html', { 'coffee': coffee })
+  return render(request, 'coffee/detail.html', { 'coffee': coffee , 'sugar_form' :SugarForm , })
+
+
+def add_sugar(request, coffee_id):
+
+  form = SugarForm(request.POST)
+
+  if form.is_valid():
+
+    new_sugar = form.save(commit=False)
+    new_sugar.coffee_id = coffee_id
+    new_sugar.save()
+  return redirect('detail', coffee_id=coffee_id)
