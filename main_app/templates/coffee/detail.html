@@ -1,16 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Coffee Details</h1>
+<h1 class="title">Coffee Details</h1>
 
 <div class="card">
   <div class="card-content">
-    <span class="card-title">{{ coffee.name }}</span>
-    <p>Type: {{ coffee.type }}</p>
-    <p>Description: {{ coffee.description }}</p>
+    <span class="title is-3 is-spaced">{{ coffee.name }}</span>
+<div class="subtitle">
+  <p>Type: {{ coffee.type }}</p>
+</div>
+<hr>
+<p> {{ coffee.description }}</p>
   </div>
-  <div class="card-action">
-    <a href="{% url 'coffee_update' coffee.id %}">Edit</a>
-    <a href="{% url 'coffee_delete' coffee.id %}">Delete</a>
+  <div class="subtitle">
+    <a class="button is-warning" href="{% url 'coffee_update' coffee.id %}">Edit</a>
+    <a class="button is-danger" href="{% url 'coffee_delete' coffee.id %}">Delete</a>
   </div>
 </div>
 
