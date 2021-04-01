@@ -38,6 +38,23 @@
   </form>
 </div>
 
+<div class="card">
+  <form
+    class="table is-bordered"
+    method="post"
+    style="text-align: center;margin-top: 10vh;margin-bottom: 10vh;"
+    action="/cats/{{coffee.id}}/add_sugar/"
+  >
+    {% csrf_token %} {{ flavor_form.as_table }}
+    <input
+      class="button is-warning"
+      type="submit"
+      class="btn"
+      value="Add Flavor"
+    />
+  </form>
+</div>
+
 <div class="is-half is-offset-one-quarter">
   <table
     class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
