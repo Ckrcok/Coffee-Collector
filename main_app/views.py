@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
 from .models import Coffee, Flavor
 from .forms import SugarForm
 
@@ -45,13 +45,13 @@ def add_sugar(request, coffee_id):
         new_sugar.save()
   return redirect('detail', coffee_id=coffee_id)
 
-class def assoc_flavor(request,coffee_id, flavor_id):
+def assoc_flavor(request,coffee_id, flavor_id):
     Coffee.objects.get(id=coffee_id).falvors.add(flavor_id)
     return redirect('detail', coffee_id=coffee_id)
 
 def unassoc_flavor(request,coffee_id, flavor_id):
     Coffee.objects.get(id=coffee_id).flavor.remove(flavor_id)
-    return redurect('detail', coffee_id=coffe_id)
+    return redirect('detail', coffee_id=coffee_id)
 
 class FlavorList(ListView):
     model = Flavor

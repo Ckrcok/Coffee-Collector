@@ -11,5 +11,11 @@ urlpatterns = [
     path('coffee/<int:pk>/update/', views.CoffeeUpdate.as_view(), name='coffee_update'),
     path('coffee/<int:pk>/delete/', views.CoffeeDelete.as_view(), name='coffee_delete'),
     path('cats/<int:coffee_id>/add_sugar/', views.add_sugar, name='add_sugar'),
-
+    path('coffee/<int:coffee_id>/assoc_flavor/<int:flavor_id>', views.assoc_flavor, name='assoc_flavor'),
+    path('coffee/<int:coffee_id>/unassoc_flavor', views.unassoc_flavor, name='unassoc_flavor'),
+    path('flavors/',views.FlavorList.as_view(), name='Flavor_index'),
+    path('flavors/<int:pk>/', views.FlavorDetail.as_view(),name='flavor_detail'),
+    path('flavors/create/', views.FlavorCreate.as_view(), name='flavor_create'),
+    path('flavors/update/', views.FlavorUpdate.as_view(), name='flavor_update'),
+    path('flavors/<int:pk>/delete', views.FlavorDelete.as_view(), name='falvor_delete'),
 ]
