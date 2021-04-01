@@ -16,6 +16,6 @@ urlpatterns = [
     path('flavors/', views.FlavorList.as_view(), name='flavors_index'),
     path('flavors/<int:pk>/', views.FlavorDetail.as_view(), name='flavors_detail'),
     path('flavors/create/', views.FlavorCreate.as_view(), name='flavors_create'),
-    path('flavors/update/', views.FlavorUpdate.as_view(), name='flavors_update'),
-    path('flavors/<int:pk>/delete', views.FlavorDelete.as_view(), name='falvors_delete'),
+    path('flavors/<int:pk>/update/', views.FlavorUpdate.as_view(), name='flavors_update'),
+    path('flavors/<int:pk>/delete/', views.FlavorDelete.as_view(), name='flavors_delete'),
 ]
