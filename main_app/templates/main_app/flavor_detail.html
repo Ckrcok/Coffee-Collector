@@ -9,8 +9,8 @@
         <span class="card-title">{{ flavor.name }}</span>
       </div>
       <div class="card-action">
-        <a href="{% url 'flavor_update' flavor.id %}">Edit</a>
-        <a href="{% url 'flavor_delete' flavor.id %}">Delete</a>
+        <a href="{% url 'flavors_update' flavor.id %}">Edit</a>
+        <a href="{% url 'flavors_delete' flavor.id %}">Delete</a>
       </div>
     </div>
   </div>
