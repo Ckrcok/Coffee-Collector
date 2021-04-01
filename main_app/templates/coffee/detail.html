@@ -26,7 +26,7 @@
     class="table is-bordered"
     method="post"
     style="text-align: center;margin-top: 10vh;margin-bottom: 10vh;"
-    action="/cats/{{coffee.id}}/add_sugar/"
+    action="/coffees/{{coffee.id}}/add_sugar/"
   >
     {% csrf_token %} {{ sugar_form.as_table }}
     <input
@@ -34,23 +34,6 @@
       type="submit"
       class="btn"
       value="Add Sugar"
-    />
-  </form>
-</div>
-
-<div class="card">
-  <form
-    class="table is-bordered"
-    method="post"
-    style="text-align: center;margin-top: 10vh;margin-bottom: 10vh;"
-    action="/cats/{{coffee.id}}/add_sugar/"
-  >
-    {% csrf_token %} {{ flavor_form.as_table }}
-    <input
-      class="button is-warning"
-      type="submit"
-      class="btn"
-      value="Add Flavor"
     />
   </form>
 </div>
@@ -74,6 +57,59 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
+
+<hr />
+<div class="row">
+  <div class="col s6">
+    <h3>{{ coffee.name }}'s Flavors</h3>
+    {% if coffee.flavors.count %} {% for flavor in cofee.flavors.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          A <span style="color: {{ flavor.color }}">{{ flavor.color }}</span> {{
+          flavor.name }}
+        </span>
+      </div>
+      <div class="card-action">
+        <form
+          action="{% url 'unassoc_flavor' coffee.id flavor.id %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn">Remove</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>No flavors :(</h5>
+    {% endif %}
+  </div>
+  <!-- Available flavors will come after this line -->
+  <div class="col s6">
+    <h3>Available flavors</h3>
+    {% if flavors.count %} {% for flavor in flavors.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          A <span style="color: {{ flavor.color }}">{{ flavor.color }}</span> {{
+          flavor.name }}
+        </span>
+      </div>
+      <div class="card-action">
+        <form
+          action="{% url 'assoc_flavor' coffee.id flavor.id %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn">Add</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>{{coffee.name}} Already Has All flavors Available</h5>
+    {% endif %}
+  </div>
 </div>
 
 {% endblock %}

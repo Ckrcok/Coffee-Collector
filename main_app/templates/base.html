@@ -55,10 +55,16 @@
               </a>
 
               <div class="navbar-dropdown">
-                <a href="{%url 'coffee_create'%}" class="navbar-item">
+                <a href="{% url 'coffee_create' %}" class="navbar-item">
                   Add A Coffee
                 </a>
-                <a href="{%url 'contact'%}" class="navbar-item">
+                <a href="{% url 'flavors_create' %}" class="navbar-item">
+                  Add a Flavor
+                </a>
+                <a href="{% url 'flavors_index' %}" class="navbar-item">
+                  View All Flavors
+                </a>
+                <a href="{% url 'contact' %}" class="navbar-item">
                   Contact
                 </a>
                 <hr class="navbar-divider" />
