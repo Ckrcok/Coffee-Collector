@@ -7,7 +7,6 @@ SUGARS =(
 ('Glucose', 'Glucose'),
 ('Fructose', 'Fructose'),
 ('Sucrose',"Sucrose")
-
 )
 
 # Create your models here.

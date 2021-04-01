@@ -1,17 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
-from .models import Coffee
+from .models import Coffee, Flavor
 from .forms import SugarForm
-
-
-
-
-# coffees = [
-#   Coffee('Arabica Coffee', 'Arabica', ' is the most common (and certainly most heavily marketed) type of coffee in North America. That’s because it actually has a sweeter, more delicate flavor and the coffee itself tends to be less acidic.'),
-#   Coffee('Robusta Coffee', 'Robusta', 'Robusta coffee beans are second on the list and the most popular in Europe, the Middle East and Africa. Its name does this bean justice, as it is known for its strong and often harsh flavor profile. Robusta coffees have extremely high levels of caffeine, which makes the plant far more resilient than the Arabica species.'),
-#   Coffee('Liberica Coffee', 'Liberica', 'Liberica coffee beans are a rare treat. They’re grown in very specific climates with production being far too scarce for farmers to scale their operations to truly satisfy a global marketplace. Even still, the beans are considered a pleasant surprise. Many who’ve tried the coffee liken the aroma to fruit and flowers and describe the flavor as having a somewhat “woody” taste.')
-# ]
 
 
 # Create your views here.
@@ -49,7 +40,30 @@ def add_sugar(request, coffee_id):
 
   if form.is_valid():
 
-    new_sugar = form.save(commit=False)
-    new_sugar.coffee_id = coffee_id
-    new_sugar.save()
+        new_sugar = form.save(commit=False)
+        new_sugar.coffee_id = coffee_id
+        new_sugar.save()
   return redirect('detail', coffee_id=coffee_id)
+
+class def assoc_flavor(request,coffee_id, flavor_id):
+    Coffee.objects.get(id=coffee_id).falvors.add(flavor_id)
+    return redirect('detail', coffee_id=coffee_id)
+
+def unassoc_flavor(request,coffee_id, flavor_id):
+    Coffee.objects.get(id=coffee_id).flavor.remove(flavor_id)
+    return redurect('detail', coffee_id=coffe_id)
+
+class FlavorList(ListView):
+    model = Flavor
+class FlavorDetail(DetailView):
+    model = Flavor
+class FlavorCreate(CreateView):
+    model = Flavor
+    fields='__all__'
+class FlavorUpdate(UpdateView):
+    model = Flavor
+    fields = ['name']
+
+class FlavorDelete(DeleteView):
+    model = Flavor
+    success_url = '/flavors/'
