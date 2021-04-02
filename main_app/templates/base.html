@@ -41,6 +41,9 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
+            {% if user.is_authenticated %}
+            <div class="navbar-item">Hey {{user.username}}</div>
+            {% endif %}
             <a href="/" class="navbar-item">
               Home
             </a>
