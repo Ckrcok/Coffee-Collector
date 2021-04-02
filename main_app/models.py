@@ -1,13 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 
 
 SUGARS =(
-('Lactose ', 'Lactose '),
-('Glucose', 'Glucose'),
-('Fructose', 'Fructose'),
-('Sucrose',"Sucrose")
+('White ', 'White '),
+('Brown', 'Brown'),
+('Stevia', 'Stevia'),
+('Coconut',"Coconut")
 )
 
 # Create your models here.
@@ -28,6 +29,8 @@ class Coffee(models.Model):
     description = models.TextField(max_length=400)
 
     flavors = models.ManyToManyField(Flavor)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

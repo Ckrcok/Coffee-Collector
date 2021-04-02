@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 class="title is-1">Log In</h1>
+
+<!-- Add the login form -->
+<div class="field">
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="input" style="margin-top: 5vh;margin-bottom: 5vh;">
+      {{ form.as_table }}
+    </div>
+    <input type="submit" class="button is-success" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
+
+{% endblock %}

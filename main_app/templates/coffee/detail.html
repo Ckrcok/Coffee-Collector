@@ -23,7 +23,7 @@
 
 <div class="card">
   <div class="title is-1">
-    How Much Sugar You Like?
+    How Much DO Sugar You Like?
   </div>
   <form
     class="table is-bordered"
@@ -33,7 +33,7 @@
   >
     {% csrf_token %} {{ sugar_form.as_table }}
     <input
-      class="button is-warning"
+      class="button is-primary"
       type="submit"
       class="btn"
       value="Add Sugar"
@@ -79,7 +79,13 @@
           method="post"
         >
           {% csrf_token %}
-          <button type="submit" class="btn">Remove</button>
+          <button
+            style="margin-top: 5vh;margin-bottom: 5vh;"
+            type="submit"
+            class="button is-danger"
+          >
+            Remove
+          </button>
         </form>
       </div>
     </div>
@@ -105,7 +111,13 @@
           method="post"
         >
           {% csrf_token %}
-          <button type="submit" class="button is-success">Add</button>
+          <button
+            style="margin-top: 5vh;margin-bottom: 5vh;"
+            type="submit"
+            class="button is-success"
+          >
+            Add
+          </button>
         </form>
       </div>
     </div>

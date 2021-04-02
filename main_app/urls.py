@@ -18,4 +18,5 @@ urlpatterns = [
     path('flavors/create/', views.FlavorCreate.as_view(), name='flavors_create'),
     path('flavors/<int:pk>/update/', views.FlavorUpdate.as_view(), name='flavors_update'),
     path('flavors/<int:pk>/delete/', views.FlavorDelete.as_view(), name='flavors_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
