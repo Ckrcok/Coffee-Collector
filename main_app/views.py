@@ -51,7 +51,7 @@ def assoc_flavor(request,coffee_id, flavor_id):
     return redirect('detail', coffee_id=coffee_id)
 
 def unassoc_flavor(request,coffee_id, flavor_id):
-    Coffee.objects.get(id=coffee_id).flavor.remove(flavor_id)
+    Coffee.objects.get(id=coffee_id).flavors.remove(flavor_id)
     return redirect('detail', coffee_id=coffee_id)
 
 class FlavorList(ListView):
