@@ -31,7 +31,8 @@ def coffee_index(request):
 
 def coffees_detail(request, coffee_id):
   coffee = Coffee.objects.get(id=coffee_id)
-  return render(request, 'coffee/detail.html', { 'coffee': coffee , 'sugar_form' :SugarForm , })
+  flavors_coffee_doesnt_have = Flavor.objects.exclude(id__in = coffee.flavors.all().values_list('id'))
+  return render(request, 'coffee/detail.html', { 'coffee': coffee , 'sugar_form' :SugarForm ,'flavors': flavors_coffee_doesnt_have })
 
 
 def add_sugar(request, coffee_id):
@@ -46,7 +47,7 @@ def add_sugar(request, coffee_id):
   return redirect('detail', coffee_id=coffee_id)
 
 def assoc_flavor(request,coffee_id, flavor_id):
-    Coffee.objects.get(id=coffee_id).falvors.add(flavor_id)
+    Coffee.objects.get(id=coffee_id).flavors.add(flavor_id)
     return redirect('detail', coffee_id=coffee_id)
 
 def unassoc_flavor(request,coffee_id, flavor_id):

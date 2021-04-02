@@ -63,7 +63,7 @@
 <div class="row">
   <div class="col s6">
     <h3>{{ coffee.name }}'s Flavors</h3>
-    {% if coffee.flavors.count %} {% for flavor in cofee.flavors.all %}
+    {% if coffee.flavors.count %} {% for flavor in coffee.flavors.all %}
     <div class="card">
       <div class="card-content">
         <span class="card-title">
@@ -92,8 +92,9 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">
-          A <span style="color: {{ flavor.color }}">{{ flavor.color }}</span> {{
-          flavor.name }}
+          A
+          <span style="color: {{ flavor.color }}">{{ flavor.color }}</span>
+          {{flavor.name }}
         </span>
       </div>
       <div class="card-action">

@@ -27,6 +27,8 @@ class Coffee(models.Model):
     type = models.CharField(max_length=(100))
     description = models.TextField(max_length=400)
 
+    flavors = models.ManyToManyField(Flavor)
+
     def __str__(self):
         return self.name
     def get_absolute_url(self):
